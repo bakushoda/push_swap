@@ -6,7 +6,7 @@
 /*   By: bshoda <bshoda@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 00:00:00 by bshoda            #+#    #+#             */
-/*   Updated: 2026/11/03 17:48:55 by bshoda           ###   ########.fr       */
+/*   Updated: 2026/11/04 23:04:38 by bshoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void	init(t_ctx *c)
 	c->b.n = 0;
 	c->bench = 0;
 	c->disorder = 0;
-	i = 0;
 	i = 0;
 	while (i < 11)
 	{
