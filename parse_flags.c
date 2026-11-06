@@ -53,8 +53,8 @@ static int	strategy_flag(char *s, t_strategy *strategy, int *seen)
 	names[1] = "--simple";
 	names[2] = "--medium";
 	names[3] = "--complex";
-	i = -1;
-	while (++i < 4)
+	i = 0;
+	while (i < 4)
 	{
 		if (equal(s, names[i]) && !*seen)
 		{
@@ -62,6 +62,7 @@ static int	strategy_flag(char *s, t_strategy *strategy, int *seen)
 			*strategy = (t_strategy)i;
 			return (1);
 		}
+		i++;
 	}
 	return (0);
 }
