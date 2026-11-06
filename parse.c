@@ -85,12 +85,13 @@ int	parse_args(int ac, char **av, t_ctx *c, t_strategy *strategy)
 		return (0);
 	*strategy = ADAPTIVE;
 	seen = 0;
-	i = 0;
-	while (++i < ac)
+	i = 1;
+	while (i < ac)
 	{
 		flag = parse_flag(av[i], c, strategy, &seen);
 		if (!flag || (flag < 0 && !add_values(av[i], c->a.v, &c->a.n)))
 			return (0);
+		i++;
 	}
 	return (1);
 }
