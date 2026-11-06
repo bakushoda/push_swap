@@ -21,16 +21,18 @@ static double	disorder(t_stack *s)
 
 	inversions = 0;
 	pairs = 0;
-	i = -1;
-	while (++i < s->n)
+	i = 0;
+	while (i < s->n)
 	{
-		j = i;
-		while (++j < s->n)
+		j = i + 1;
+		while (j < s->n)
 		{
 			pairs++;
 			if (s->v[i] > s->v[j])
 				inversions++;
+			j++;
 		}
+		i++;
 	}
 	if (!pairs)
 		return (0);
