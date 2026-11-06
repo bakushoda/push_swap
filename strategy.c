@@ -39,6 +39,18 @@ static double	disorder(t_stack *s)
 	return ((double)inversions / (double)pairs);
 }
 
+static void	copy_ranks(t_stack *a, int *ranks)
+{
+	int	i;
+
+	i = 0;
+	while (i < a->n)
+	{
+		a->v[i] = ranks[i];
+		i++;
+	}
+}
+
 int	make_ranks(t_stack *a)
 {
 	int	*ranks;
@@ -48,18 +60,20 @@ int	make_ranks(t_stack *a)
 	ranks = malloc(sizeof(int) * a->n);
 	if (!ranks)
 		return (0);
-	i = -1;
-	while (++i < a->n)
+	i = 0;
+	while (i < a->n)
 	{
 		ranks[i] = 0;
-		j = -1;
-		while (++j < a->n)
+		j = 0;
+		while (j < a->n)
+		{
 			if (a->v[j] < a->v[i])
 				ranks[i]++;
+			j++;
+		}
+		i++;
 	}
-	i = -1;
-	while (++i < a->n)
-		a->v[i] = ranks[i];
+	copy_ranks(a, ranks);
 	free(ranks);
 	return (1);
 }

@@ -44,8 +44,9 @@ void	sort_five(t_ctx *c)
 	next = 0;
 	while (c->a.n > 3)
 	{
-		move_to_top(c, &c->a, next++, 1);
+		move_to_top(c, &c->a, next, 1);
 		op(c, 4);
+		next++;
 	}
 	small_sort(c);
 	while (c->b.n)
@@ -60,10 +61,13 @@ void	simple_sort(t_ctx *c)
 	while (c->a.n > 1)
 	{
 		min = c->a.v[0];
-		i = 0;
-		while (++i < c->a.n)
+		i = 1;
+		while (i < c->a.n)
+		{
 			if (c->a.v[i] < min)
 				min = c->a.v[i];
+			i++;
+		}
 		move_to_top(c, &c->a, min, 1);
 		op(c, 4);
 	}

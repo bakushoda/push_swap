@@ -37,9 +37,12 @@ static void	push(t_stack *to, t_stack *from)
 	}
 	to->v[0] = from->v[0];
 	to->n++;
-	i = -1;
-	while (++i < from->n - 1)
+	i = 0;
+	while (i < from->n - 1)
+	{
 		from->v[i] = from->v[i + 1];
+		i++;
+	}
 	from->n--;
 }
 
@@ -47,25 +50,24 @@ static void	rotate(t_stack *s, int reverse)
 {
 	int	x;
 	int	i;
+	int	direction;
 
 	if (s->n < 2)
 		return ;
-	if (!reverse)
+	i = 0;
+	direction = 1;
+	if (reverse)
 	{
-		x = s->v[0];
-		i = -1;
-		while (++i < s->n - 1)
-			s->v[i] = s->v[i + 1];
-		s->v[i] = x;
+		i = s->n - 1;
+		direction = -1;
 	}
-	else
+	x = s->v[i];
+	while (i + direction >= 0 && i + direction < s->n)
 	{
-		x = s->v[s->n - 1];
-		i = s->n;
-		while (--i > 0)
-			s->v[i] = s->v[i - 1];
-		s->v[0] = x;
+		s->v[i] = s->v[i + direction];
+		i += direction;
 	}
+	s->v[i] = x;
 }
 
 static void	apply(t_ctx *c, int code)

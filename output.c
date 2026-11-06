@@ -51,9 +51,12 @@ long	total_operations(t_ctx *c)
 	int		i;
 
 	total = 0;
-	i = -1;
-	while (++i < 11)
+	i = 0;
+	while (i < 11)
+	{
 		total += c->count[i];
+		i++;
+	}
 	return (total);
 }
 
@@ -72,7 +75,10 @@ void	print_bench(t_ctx *c)
 	putstr("\noperations: ");
 	print_number(total_operations(c), 2);
 	putstr("\n");
-	i = -1;
-	while (++i < 11)
+	i = 0;
+	while (i < 11)
+	{
 		(putstr(ops[i]), print_number(c->count[i], 2), putstr("\n"));
+		i++;
+	}
 }

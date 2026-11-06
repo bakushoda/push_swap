@@ -22,13 +22,14 @@ void	complex_sort(t_ctx *c)
 	while (((c->a.n - 1) >> bit) != 0)
 	{
 		size = c->a.n;
-		i = -1;
-		while (++i < size)
+		i = 0;
+		while (i < size)
 		{
 			if ((c->a.v[0] >> bit) & 1)
 				op(c, 5);
 			else
 				op(c, 4);
+			i++;
 		}
 		while (c->b.n)
 			op(c, 3);

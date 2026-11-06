@@ -16,10 +16,13 @@ int	is_sorted(t_stack *s)
 {
 	int	i;
 
-	i = 0;
-	while (++i < s->n)
+	i = 1;
+	while (i < s->n)
+	{
 		if (s->v[i - 1] > s->v[i])
 			return (0);
+		i++;
+	}
 	return (1);
 }
 

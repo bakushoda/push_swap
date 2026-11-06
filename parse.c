@@ -70,8 +70,11 @@ static int	add_values(char *s, int *values, int *n)
 			return (0);
 		i = 0;
 		while (i < *n)
-			if (values[i++] == value)
+		{
+			if (values[i] == value)
 				return (0);
+			i++;
+		}
 		values[*n] = value;
 		(*n)++;
 		while (is_space(*s))
