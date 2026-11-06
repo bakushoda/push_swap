@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bshoda <bshoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bshoda <bshoda@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 00:00:00 by bshoda            #+#    #+#             */
-/*   Updated: 2026/07/25 00:00:00 by bshoda           ###   ########.fr       */
+/*   Updated: 2026/11/06 22:31:21 by bshoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ static int	add_values(char *s, int *values, int *n)
 		while (i < *n)
 			if (values[i++] == value)
 				return (0);
-		values[(*n)++] = value;
+		values[*n] = value;
+		(*n++);
 		while (is_space(*s))
 			s++;
 	}
