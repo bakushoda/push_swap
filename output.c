@@ -68,7 +68,7 @@ void	print_bench(t_ctx *c)
 	putstr("disorder: ");
 	print_disorder(c->disorder);
 	putstr("strategy: ");
-	putstr(names[c->used]);
+	putstr(names[c->selected_strategy]);
 	putstr("\noperations: ");
 	print_number(total_operations(c), 2);
 	putstr("\n");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bshoda <bshoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bshoda <bshoda@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 00:00:00 by bshoda            #+#    #+#             */
-/*   Updated: 2026/07/25 00:00:00 by bshoda           ###   ########.fr       */
+/*   Updated: 2026/11/06 21:15:43 by bshoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_ctx
 	long		count[11];
 	int			bench;
 	double		disorder;
-	t_strategy	used;
+	t_strategy	selected_strategy;
 }	t_ctx;
 
 int		parse_args(int ac, char **av, t_ctx *c, t_strategy *strategy);

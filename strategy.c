@@ -76,7 +76,7 @@ static t_strategy	select_strategy(t_strategy strategy, double value)
 int	run_sort(t_ctx *c, t_strategy strategy)
 {
 	c->disorder = disorder(&c->a);
-	c->used = select_strategy(strategy, c->disorder);
+	c->selected_strategy = select_strategy(strategy, c->disorder);
 	if (is_sorted(&c->a))
 		return (1);
 	if (c->a.n <= 3)
@@ -88,9 +88,9 @@ int	run_sort(t_ctx *c, t_strategy strategy)
 		return (0);
 	if (c->a.n <= 5)
 		sort_five(c);
-	else if (c->used == SIMPLE)
+	else if (c->selected_strategy == SIMPLE)
 		simple_sort(c);
-	else if (c->used == MEDIUM)
+	else if (c->selected_strategy == MEDIUM)
 		medium_sort(c);
 	else
 		complex_sort(c);
