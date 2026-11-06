@@ -17,42 +17,45 @@ static int	is_space(char c)
 	return (c == ' ' || (c >= 9 && c <= 13));
 }
 
-static long	read_digits(char **s, int *digits)
+static long	read_digits(char *text, int *digit_count)
 {
-	long	n;
+	long	number;
 
-	n = 0;
-	*digits = 0;
-	while (**s >= '0' && **s <= '9')
+	number = 0;
+	*digit_count = 0;
+	while (text[*digit_count] >= '0' && text[*digit_count] <= '9')
 	{
-		n = n * 10 + *(*s)++ - '0';
-		(*digits)++;
-		if (n > 2147483648L)
+		number = number * 10 + text[*digit_count] - '0';
+		(*digit_count)++;
+		if (number > 2147483648L)
 			break ;
 	}
-	return (n);
+	return (number);
 }
 
-static int	read_int(char **s, int *value)
+static char	*read_int(char *text, int *value)
 {
-	long	n;
+	long	number;
 	int		sign;
-	int		digits;
+	int		digit_count;
 
-	while (is_space(**s))
-		(*s)++;
+	while (is_space(*text))
+		text++;
 	sign = 1;
-	if (**s == '-' || **s == '+')
-		if (*(*s)++ == '-')
+	if (*text == '-' || *text == '+')
+	{
+		if (*text == '-')
 			sign = -1;
-	n = read_digits(s, &digits);
-	if (!digits || (!is_space(**s) && **s))
-		return (0);
-	n *= sign;
-	if (n < INT_MIN || n > INT_MAX)
-		return (0);
-	*value = (int)n;
-	return (1);
+		text++;
+	}
+	number = read_digits(text, &digit_count) * sign;
+	text += digit_count;
+	if (!digit_count || (*text && !is_space(*text)))
+		return (NULL);
+	if (number < INT_MIN || number > INT_MAX)
+		return (NULL);
+	*value = (int)number;
+	return (text);
 }
 
 static int	add_values(char *s, int *values, int *n)
@@ -62,14 +65,15 @@ static int	add_values(char *s, int *values, int *n)
 
 	while (*s)
 	{
-		if (!read_int(&s, &value))
+		s = read_int(s, &value);
+		if (!s)
 			return (0);
 		i = 0;
 		while (i < *n)
 			if (values[i++] == value)
 				return (0);
 		values[*n] = value;
-		(*n++);
+		(*n)++;
 		while (is_space(*s))
 			s++;
 	}
