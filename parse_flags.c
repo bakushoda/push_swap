@@ -46,17 +46,17 @@ static int	equal(char *a, char *b)
 
 static int	strategy_flag(char *s, t_strategy *strategy, int *seen)
 {
-	char	*names[4];
+	char	*flag_names[4];
 	int		i;
 
-	names[0] = "--adaptive";
-	names[1] = "--simple";
-	names[2] = "--medium";
-	names[3] = "--complex";
+	flag_names[0] = "--adaptive";
+	flag_names[1] = "--simple";
+	flag_names[2] = "--medium";
+	flag_names[3] = "--complex";
 	i = 0;
 	while (i < 4)
 	{
-		if (equal(s, names[i]) && !*seen)
+		if (equal(s, flag_names[i]) && !*seen)
 		{
 			*seen = 1;
 			*strategy = (t_strategy)i;
