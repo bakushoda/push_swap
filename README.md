@@ -99,8 +99,7 @@ is the total number of argument characters.
 # Contributions
 
 - bshoda: implementation and testing.
-- teammate_login: replace this placeholder with the second learner's contribution.
-
+- harnakaj: implementation and testing.
 # Resources
 
 - The supplied Push_swap subject
