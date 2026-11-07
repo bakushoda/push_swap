@@ -6,7 +6,7 @@
 /*   By: bshoda <bshoda@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 00:00:00 by bshoda            #+#    #+#             */
-/*   Updated: 2026/11/06 22:31:21 by bshoda           ###   ########.fr       */
+/*   Updated: 2026/11/07 17:10:41 by bshoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	parse_args(int ac, char **av, t_ctx *c, t_strategy *strategy)
 	while (i < ac)
 	{
 		flag = parse_flag(av[i], c, strategy, &seen);
-		if (!flag || (flag < 0 && !add_values(av[i], c->a.v, &c->a.n)))
+		if (!flag || (flag == -1 && !add_values(av[i], c->a.v, &c->a.n)))
 			return (0);
 		i++;
 	}
