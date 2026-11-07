@@ -25,7 +25,7 @@ static void	init(t_ctx *c)
 	i = 0;
 	while (i < 11)
 	{
-		c->count[i] = 0;
+		c->op_counts[i] = 0;
 		i++;
 	}
 }

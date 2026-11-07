@@ -97,7 +97,7 @@ void	op(t_ctx *c, int code)
 	int			len;
 
 	apply(c, code);
-	c->count[code]++;
+	c->op_counts[code]++;
 	len = 3;
 	if (code >= 8)
 		len = 4;

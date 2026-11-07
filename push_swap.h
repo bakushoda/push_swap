@@ -35,7 +35,7 @@ typedef struct s_ctx
 {
 	t_stack		a;
 	t_stack		b;
-	long		count[11];
+	long		op_counts[11];
 	int			bench;
 	double		disorder;
 	t_strategy	selected_strategy;
